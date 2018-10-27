@@ -1,0 +1,51 @@
+html {
+    font-family: consolas, courier;
+    background-image: url(topography.png);
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.center {
+    padding: 10%;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Poppins', sans-serif;
+}
+a {
+    color: #ff0099;
+}
+
+.subtitle {
+    color: #ff0099;
+}
+
+.navigation {
+    padding: 1% 10%;
+    background-color: #333333;
+    text-align: right;
+    word-spacing: 30px;
+    background-image: url(background.svg);
+    background-repeat: no-repeat;
+    background-position: 10%;
+}
+
+.image {
+    height: 25px;
+    width: 25px;
+    align-content: right;
+}
+
+.separator {
+    text-align: center;
+    margin: 60px;
+}
+
+.title-2 {
+    text-align: center;
+}
