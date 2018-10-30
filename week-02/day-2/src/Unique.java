@@ -46,10 +46,5 @@ public class Unique {
         }
         return uniqueArray;
     }
-
-    public static void printArray(int[] uniqueArray) {
-        for (int i = 0; i < uniqueArray.length; i++) {
-            System.out.println(uniqueArray[i]);
-        }
-    }
+    
 }
