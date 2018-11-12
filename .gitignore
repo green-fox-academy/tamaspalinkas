@@ -9,6 +9,7 @@
 .idea/**/shelf
 .idea/
 *.iml
+.DS_Store
 
 # Generated files
 .idea/**/contentModel.xml
