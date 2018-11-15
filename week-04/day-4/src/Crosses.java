@@ -6,17 +6,30 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Crosses {
     public static void mainDraw(Graphics graphics) {
-
+        drawCross(0,0,WIDTH, 7,graphics);
 
     }
+    public static void drawCross(int x, int y, int size, int n, Graphics graphics) {
+        if (n == 0) {
+            return;
+        }
 
-    public static void drawPattern(int HEIGHT, int WIDTH, Graphics graphics) {
-        //TODO impl recursion
+        for (int i = 0; i < 3; i ++) {
+            for (int j = 0; j < 3; j++) {
+                int offset = size / 3;
+                graphics.drawRect(x + i * offset, y + j * offset, offset, offset);
+                if ((i + j) % 2 != 0) {
+                    drawCross(x + i * offset, y + j * offset, offset, n - 1, graphics);
+                }
+
+            }
+        }
+
     }
 
     // Don't touch the code below
-    static int WIDTH = 500;
-    static int HEIGHT = 500;
+    static int WIDTH = 729;
+    static int HEIGHT = 729;
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
