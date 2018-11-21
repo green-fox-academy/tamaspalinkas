@@ -1,4 +1,4 @@
-package comparable;
+package comparable.domino;
 
 public class Domino implements Comparable {
   private final int left;

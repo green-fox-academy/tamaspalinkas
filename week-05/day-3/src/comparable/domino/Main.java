@@ -1,4 +1,6 @@
-package comparable;
+package comparable.domino;
+
+import comparable.domino.Domino;
 
 import java.util.ArrayList;
 import java.util.Collections;
