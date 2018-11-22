@@ -28,4 +28,9 @@ class FibonacciTest {
     assertEquals(0, fibonacci.fibonacci(0));
   }
 
+  @Test
+  void fibonacci50th() {
+    assertEquals(12586269025l, fibonacci.fibonacci(50));
+  }
+
 }

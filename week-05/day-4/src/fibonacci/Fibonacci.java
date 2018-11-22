@@ -2,7 +2,7 @@ package fibonacci;
 
 public class Fibonacci {
 
-  public int fibonacci(int index) {
+  public long fibonacci(int index) {
     if (index < 0) {
       return -1;
     }
