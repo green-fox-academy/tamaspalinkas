@@ -3,7 +3,7 @@ package SharpieSet;
 import Sharpie.Sharpie;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Sharpie sharpie = new Sharpie("Blue", 1.0);
         Sharpie sharpie1 = new Sharpie("Blue", 1.0);
         Sharpie sharpie2 = new Sharpie("Blue", 1.0);
