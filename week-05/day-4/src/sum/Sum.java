@@ -7,14 +7,18 @@ public class Sum {
     if (arrayList.isEmpty()) {
       return 0;
     }
+
     if (arrayList.size() == 1) {
       return arrayList.get(0);
     }
+
     int sum = 0;
     for (int item : arrayList) {
       sum += item;
     }
-
+    if (sum < -1) {
+      return -1;
+    }
     return sum;
   }
 }

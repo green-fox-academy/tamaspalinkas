@@ -46,5 +46,12 @@ class SumTest {
             });
   }
 
+  @Test
+  void sumIntOverFlow() {
+    arrayList.add(Integer.MAX_VALUE);
+    arrayList.add(1);
+    assertEquals(-1, sum.sumElements(arrayList));
+  }
+
 
 }
