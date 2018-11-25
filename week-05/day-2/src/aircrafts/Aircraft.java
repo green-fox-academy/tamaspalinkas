@@ -7,11 +7,25 @@ public class Aircraft {
   private int ammoStore;
 
   public int fight() {
-    int tempAmmoStore = ammoStore;
-    ammoStore = 0;
-    int damage = baseDamage * tempAmmoStore;
+    int damage = aircraftDamage();
+    resetAmmoStore();
     return damage;
+  }
 
+  public int aircraftDamage() {
+    return baseDamage * ammoStore;
+  }
+
+  public int getMaxAmmo() {
+    return maxAmmo;
+  }
+
+  public int getAmmoStore() {
+    return ammoStore;
+  }
+
+  public void resetAmmoStore() {
+    ammoStore = 0;
   }
 
   public int refill(int n) {
@@ -26,11 +40,19 @@ public class Aircraft {
     }
   }
 
-  public Aircraft(String type, int baseDamage, int maxAmmo, int ammoStore) {
+  public Aircraft(String type) {
     this.type = type;
-    this.baseDamage = baseDamage;
-    this.maxAmmo = maxAmmo;
-    this.ammoStore = ammoStore;
+    this.ammoStore = 0;
+
+    if (type.equals("F16")) {
+      maxAmmo = 8;
+      baseDamage = 30;
+    }
+
+    if (type.equals("F35")) {
+      maxAmmo = 12;
+      baseDamage = 50;
+    }
   }
 
   public String getType() {
@@ -45,5 +67,4 @@ public class Aircraft {
     return type.equals("F35");
 
   }
-
 }
