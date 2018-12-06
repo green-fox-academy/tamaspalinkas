@@ -1,12 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="sign-up-style.css">
 </head>
+
 <body>
-    
+    <h1>Sign up</h1>
+    <form action="https://newsletter-ws.herokuapp.com/register" method="post">
+        <div>
+            <input type="text" placeholder="Username" id="username" name="username" autofocus>
+        </div>
+        <div>
+            <input type="email" placeholder="E-mail" id="email" name="email">
+        </div>
+        <div>
+            <input type="password" placeholder="Password" id="password" name="password">
+        </div>
+        <div>
+            <input type="password" placeholder="Retype password" id="confirm_password" name="confirm_password">
+        </div>
+        <div>
+            <input type="submit" value="Sign me up">
+        </div>
+    </form>
+    <script>
+        var password = document.getElementById("password")
+            , confirm_password = document.getElementById("confirm_password");
+
+        function validatePassword() {
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords doesn't match, please try again!");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+
+    </script>
+
 </body>
+
 </html>
