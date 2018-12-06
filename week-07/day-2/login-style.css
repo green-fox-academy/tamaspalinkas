@@ -25,13 +25,9 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
     border-radius: 2px;
 }
-button {
+input[type=submit] {
     background-color: #4CAF50;
     color: whitesmoke;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
     width: 50px;
 }
 input:focus { 
