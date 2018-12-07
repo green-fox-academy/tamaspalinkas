@@ -14,8 +14,8 @@
 </div>
 
 <div>
-    <button value="available" onclick="location.href='/available'">Only available</button>
-    <button value="cheapest" onclick="location.href='/cheapest'">Cheapest first</button>
+    <button value="available" onclick="location.href='/only-available'">Only available</button>
+    <button value="cheapest" onclick="location.href='/cheapest-first'">Cheapest first</button>
     <button value="nike" onclick="location.href='/nike'">Contains nike</button>
     <button value="average" onclick="location.href='/average-stock'">Average stock</button>
     <button value="expensive" onclick="location.href='/most-expensive-available'">Most expensive available</button>
@@ -44,6 +44,9 @@
         </td>
         <td th:text=${shopItem.getQuantity()}></td>
         </td>
+    </tr>
+    <tr>
+        <td th:text="${average}"></td>
     </tr>
     </tbody>
 </table>
