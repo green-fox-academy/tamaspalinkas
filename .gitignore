@@ -12,6 +12,7 @@
 .DS_Store
 gradle/
 gradlew
+gradlew.bat
 
 # Generated files
 .idea/**/contentModel.xml
