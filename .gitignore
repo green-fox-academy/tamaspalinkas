@@ -10,7 +10,8 @@
 .idea/
 *.iml
 .DS_Store
-.gradle
+gradle/
+gradlew/
 
 # Generated files
 .idea/**/contentModel.xml
