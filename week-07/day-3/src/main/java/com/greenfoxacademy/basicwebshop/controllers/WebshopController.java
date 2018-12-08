@@ -5,14 +5,15 @@ import com.greenfoxacademy.basicwebshop.models.WebShop;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.PostConstruct;
 import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Controller
 public class WebshopController {
@@ -26,8 +27,6 @@ public class WebshopController {
     webShop.addItem(new ShopItem("Wokin", "Chicken with fried ricend WOKIN sauce", 119.0, 100));
     webShop.addItem(new ShopItem("T-shirt", "Blue with a corgi on a bike", 300.0, 1));
     webShop.addItem(new ShopItem("Running shoes", "Nike running shoes", 1000.0, 5));
-
-    //webShop.addItem(new ShopItem("T-shirt", "Blue with a corgi on a bike", 300888.0, 0));
   }
 
 
@@ -70,23 +69,33 @@ public class WebshopController {
     return "index";
   }
 
-//  @GetMapping("/nike")
-//  public String containsNike(Model model) {
-//    boolean hasNike = webShop.getShopItems()
-//            .stream()
-//            .anyMatch(o -> o.getName().contains("nike"));
-//    if (hasNike) {
-//      model.addAttribute()
-//    }
-//  }
-
   @GetMapping("/average-stock")
   public String averageStock(Model model) {
     double totalStock = webShop.getShopItems()
             .stream()
             .mapToDouble(o -> o.getQuantity()).sum();
-    model.addAttribute("average", "Average Stock:" + totalStock/webShop.getShopItems().size());
+    model.addAttribute("average", "Average Stock:" + totalStock / webShop.getShopItems().size());
     return "index";
   }
 
+  @GetMapping("/nike")
+  public String containsNike(Model model) {
+    List<ShopItem> containsNike = webShop.getShopItems()
+            .stream()
+            .filter(o -> o.getDescription().toLowerCase().contains("nike") || o.getName().toLowerCase().contains("nike"))
+            .collect(Collectors.toList());
+    model.addAttribute("shopItems", containsNike);
+    return "index";
+  }ß
+
+  @PostMapping("/search")
+  public String search(Model model, @RequestParam("q") String p) {
+    String searched = p.toLowerCase();
+    List<ShopItem> containsSearch = webShop.getShopItems()
+            .stream()
+            .filter(o -> o.getName().toLowerCase().contains(searched) || o.getDescription().toLowerCase().contains(searched))
+            .collect(Collectors.toList());
+    model.addAttribute("shopItems", containsSearch);
+    return "index";
+  }
 }

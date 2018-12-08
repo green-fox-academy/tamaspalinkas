@@ -21,10 +21,11 @@
     <button value="expensive" onclick="location.href='/most-expensive-available'">Most expensive available</button>
 </div>
 <div>
-    <label for="site-search">Search for:</label>
-    <input type="search" id="site-search" name="q" aria-label="Search through site content">
-
-    <button>Search</button>
+    <form action="/search" method="POST">
+        <label for="site-search">Search for:</label>
+        <input type="search" id="site-search" name="q" aria-label="Search through site content">
+        <input type="submit"/>
+    </form>
 </div>
 <table>
     <thead>
