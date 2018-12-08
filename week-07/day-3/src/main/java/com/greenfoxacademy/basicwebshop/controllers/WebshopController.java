@@ -86,7 +86,7 @@ public class WebshopController {
             .collect(Collectors.toList());
     model.addAttribute("shopItems", containsNike);
     return "index";
-  }ß
+  }
 
   @PostMapping("/search")
   public String search(Model model, @RequestParam("q") String p) {
