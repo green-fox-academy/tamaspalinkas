@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Basic webshop</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
@@ -13,21 +14,20 @@
     <h1 onclick="location.href='/'">My shop</h1>
 </div>
 
-<div>
+<div class="filter-bar">
     <button value="available" onclick="location.href='/only-available'">Only available</button>
     <button value="cheapest" onclick="location.href='/cheapest-first'">Cheapest first</button>
     <button value="nike" onclick="location.href='/nike'">Contains nike</button>
     <button value="average" onclick="location.href='/average-stock'">Average stock</button>
     <button value="expensive" onclick="location.href='/most-expensive-available'">Most expensive available</button>
 </div>
-<div>
+<div id="search-bar">
     <form action="/search" method="POST">
-        <label for="site-search">Search for:</label>
-        <input type="search" id="site-search" name="q" aria-label="Search through site content">
-        <input type="submit"/>
+        <input type="search" class="search_3" id="site-search" name="q" aria-label="Search through site content">
+        <input type="submit" class="submit_3" value="Search"/>
     </form>
 </div>
-<table>
+<table class="zebra-stripe">
     <thead>
     <tr>
         <th colspan="0">Name</th>
