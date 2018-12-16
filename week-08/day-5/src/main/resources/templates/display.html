@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:object="${fox}">
+    <img src="/greenfox-img.png">
+    <p th:text="|'This is' *{name}|"></p>
+    <h1>Known tricks</h1>
+    <table>
+        <th:block th:each="trick : *{listOfTricks}">
+            <tr>
+                <td th:text="${trick}"></td>
+            </tr>
+        </th:block>
+    </table>
+
+</div>
+</body>
+</html>
