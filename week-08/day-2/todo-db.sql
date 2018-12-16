@@ -1,0 +1,7 @@
+CREATE TABLE todo_table (
+  STATUS ENUM("complete", "incomplete") NOT NULL,
+  DATEADDED DATE,
+  TASK VARCHAR(255),
+  ID INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (ID)
+);
