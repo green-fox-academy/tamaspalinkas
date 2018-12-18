@@ -9,6 +9,7 @@
 <form th:action="@{/todo/update}" method="post" th:object="${todoTask}">
     <p><input type="text" th:field="*{title}"/></p>
     <div>
+        <input type="hidden" th:field="*{id}">
         <label th:text="urgent">urgent</label>
         <input type="checkbox" th:field="*{urgent}" />
     </div>

@@ -53,7 +53,7 @@ public class TodoController {
 
   @GetMapping("/update")
   public String update(@RequestParam(name = "id") Long id, Model model) {
-    model.addAttribute("todoTask", todoRepository.findById(id));
+    model.addAttribute("todoTask", todoRepository.findById(id).get());
     return "update";
   }
 
