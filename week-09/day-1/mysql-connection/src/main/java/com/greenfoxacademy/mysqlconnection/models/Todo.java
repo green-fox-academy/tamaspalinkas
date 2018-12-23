@@ -13,6 +13,8 @@ public class Todo {
   private String title;
   private boolean urgent;
   private boolean done;
+  private String content;
+  private String description;
 
   public Todo() {
     urgent = false;
@@ -22,6 +24,13 @@ public class Todo {
   public Todo(String title) {
     this();
     this.title = title;
+  }
+
+  public Todo(String title, String content, String description) {
+    this();
+    this.title = title;
+    this.content = content;
+    this.description = description;
 
 //    this.urgent = false;
 //    this.done = false;
@@ -57,5 +66,21 @@ public class Todo {
 
   public boolean getDone() {
     return done;
+  }
+
+  public String getContent() {
+    return content;
+  }
+
+  public void setContent(String content) {
+    this.content = content;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 }

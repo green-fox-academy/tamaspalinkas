@@ -19,9 +19,9 @@ public class MysqlConnectionApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    todoRepository.save(new Todo("Uninstall IntelliJ"));
-    todoRepository.save(new Todo("Uninstall SQL"));
-    todoRepository.save(new Todo("Remove files"));
+    todoRepository.save(new Todo("Todo 1"));
+    todoRepository.save(new Todo("Todo 2"));
+    todoRepository.save(new Todo("Todo 3"));
 
     Todo todo1 = todoRepository.findById(1L).get();
     todo1.setDone(true);

@@ -11,7 +11,9 @@
     <div>
         <input type="hidden" th:field="*{id}">
         <label th:text="urgent">urgent</label>
-        <input type="checkbox" th:field="*{urgent}" />
+        <input type="checkbox" th:field="*{urgent}"/>
+        <label th:text="done">done</label>
+        <input type="checkbox" th:field="*{done}">
     </div>
     <p><input type="submit" value="Submit"/>
 </form>

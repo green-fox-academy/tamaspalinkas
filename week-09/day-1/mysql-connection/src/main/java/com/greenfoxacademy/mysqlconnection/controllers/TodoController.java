@@ -20,18 +20,31 @@ public class TodoController {
   }
 
   @GetMapping({"/", "/list"})
-  public String list(Model model, @RequestParam(name = "isActive", required = false) String isActive) {
-    if (isActive == null) {
+  public String list(Model model, @RequestParam(name = "isActive", required = false) String isActive,
+                     @RequestParam(name = "searchItem", required = false) String searchItem) {
+    if (searchItem == null) {
       model.addAttribute("todoList", todoRepository.findAll());
-      return "todolist";
+      return "todoList";
     } else {
-      switch (isActive) {
-        case "true":
-          model.addAttribute(todoRepository.findAllByDone(false));
-          break;
+      System.out.println(searchItem);
+      //model.addAttribute("todoList", todoRepository.findAllByTitle(searchItem));
+      if (todoRepository.findAllByContentOrDescription(searchItem).isEmpty()) {
+        System.out.println("EMPTY QUERY RESULT");
       }
+      model.addAttribute("todoList", todoRepository.findAllByContentOrDescription(searchItem));
+      return "todoList";
     }
-    return "todoList";
+//    if (isActive == null) {
+//      model.addAttribute("todoList", todoRepository.findAll());
+//      return "todolist";
+//    } else {
+//      switch (isActive) {
+//        case "true":
+//          model.addAttribute(todoRepository.findAllByDone(false));
+//          break;
+//      }
+//    }
+//    return "todoList";
   }
 
   @GetMapping("/add")
