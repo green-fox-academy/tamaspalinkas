@@ -17,10 +17,11 @@ public class UsefulUtilitiesController {
     this.utilityService = utilityService;
   }
 
-  //  @GetMapping("/useful")
-//  public String showUseful(Model model) {
-//    model.addAttribute("links", )
-//  }
+  @GetMapping("/useful")
+  public String showUseful() {
+    return "links.html";
+  }
+
   @GetMapping("/useful/colored")
   public String coloredBackground(Model model) {
     model.addAttribute("color", utilityService.randomColor());
@@ -46,6 +47,6 @@ public class UsefulUtilitiesController {
   @ResponseBody
   @GetMapping("/useful/encoder/encode")
   public String caesarEncodeWithParams(@RequestParam(name = "text") String text, @RequestParam(name = "number") int i) {
-    return utilityService.caesar(text,i);
+    return utilityService.caesar(text, i);
   }
 }
