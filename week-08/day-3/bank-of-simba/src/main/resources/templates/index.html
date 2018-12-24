@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr th:each="bankAccount : ${bankAccounts}"
+        th:style="${bankAccount.getIsKing()} ? 'color: pink' : 'color: black'">
+        <td th:text="${bankAccount.getName()}">1</td>
+        <td th:text="| *{#numbers.formatDecimal(bankAccount.getBalance(),2,2,'COMMA')} zebra|"></td>
+        <td th:text="${bankAccount.getAnimalType()}"></td>
+        <td th:text="${bankAccountStat.count}"></td>
+        <td th:switch="${bankAccount.getGoodOrBad()}">
+            <span th:case="'good'" th:text="'good one'"></span>
+            <span th:case="'bad'" th:text="'bad one'"></span>
+        </td>
+    <tr/>
+</table>
+<form th:action="@{/raise-balance}" method="post">
+    <label for="name">Choose account name to top up</label>
+    <input type="text" id="name" name="name">
+    <input type="submit">
+</form>
+</body>
+<h1>Add account:</h1>
+<form th:action="@{/add-account}" method="post">
+    <label for="name_in">Account name:</label>
+    <input type="text" id="name_in" name="name"><br>
+
+    <label for="balance_in">Balance:</label>
+    <input type="number" id="balance_in" name="balance"><br>
+
+    <label for="type_in">Animal type:</label>
+    <input type="text" id="type_in" name="animalType"><br>
+
+    <label for="isKing_in">King or not:</label>
+    <input type="text" id="isKing_in" name="isKing"><br>
+
+    <label for="goodOrBad_in">Good or bad:</label>
+    <input type="text" id="goodOrBad_in" name="goodOrbad">
+    <input type="submit">
+</form>
+</html>
