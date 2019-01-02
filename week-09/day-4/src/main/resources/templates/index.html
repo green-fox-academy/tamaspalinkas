@@ -6,7 +6,7 @@
     <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-<a href="/add">Submit new post</a>
+<a th:href="@{/add(userId=${userId})}">Submit new post</a>
 <h1>Trending posts</h1>
 <table class="table table-hover">
     <th:block th:each="post : ${posts}">
@@ -16,6 +16,7 @@
             <td><a th:href="@{/{id}/downvote?page={page}(id=${post.getId()}, page=${page})}">-</a></td>
             <td th:text="${post.getText()}"></td>
             <td th:text="${post.getDateAdded()}"></td>
+            <td th:if="${post.getUser() != null}" th:text="${post.getUser().userName}"></td>
         </tr>
     </th:block>
 </table>

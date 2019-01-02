@@ -1,6 +1,7 @@
 package com.greenfoxacademy.redditclone.services;
 
 import com.greenfoxacademy.redditclone.models.RedditPost;
+import com.greenfoxacademy.redditclone.models.User;
 import com.greenfoxacademy.redditclone.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -41,11 +42,17 @@ public class PostService {
   }
 
   public void addPost(RedditPost redditPost) {
+    System.out.println(redditPost.getText());
+    System.out.println(redditPost.getUser());
     postRepository.save(redditPost);
   }
 
   public Page findAllPaged(int page) {
     return postRepository.findAll(new PageRequest(page, 10, Sort.by("points").descending()));
+  }
+
+  public void addUser(RedditPost redditPost, User user) {
+    redditPost.setUser(user);
   }
 
 }

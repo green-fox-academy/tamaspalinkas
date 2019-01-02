@@ -6,8 +6,9 @@
 </head>
 <body>
 <h1>Submit a new post</h1>
-<form th:action="@{/add}" method="post">
+<form th:action="@{/add(userId=${userId})}" method="post">
     <p><input type="text" name="text"/></p>
+    <input type="hidden" name="id" th:value="${userId}">
     <p><input type="submit" value="Submit" />
 </form>
 </body>

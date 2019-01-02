@@ -12,6 +12,16 @@ public class RedditPost {
   private int points;
   @Temporal(TemporalType.DATE)
   private Date dateAdded;
+  @ManyToOne
+  private User user;
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
 
   public RedditPost() {
     this.dateAdded = new Date();

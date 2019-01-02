@@ -1,6 +1,7 @@
 package com.greenfoxacademy.redditclone.controllers;
 
 import com.greenfoxacademy.redditclone.models.RedditPost;
+import com.greenfoxacademy.redditclone.models.User;
 import com.greenfoxacademy.redditclone.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,11 +17,19 @@ public class RedditPostController {
     this.postService = postService;
   }
 
+  //TODO extend index to show user for post
   @GetMapping("/")
-  public String home(Model model, @RequestParam(defaultValue = "0") int page) {
-    model.addAttribute("posts", postService.findAllPaged(page));
-    model.addAttribute("page", page);
-    return "index";
+  public String home(Model model, @RequestParam(defaultValue = "0") int page,
+                     @RequestParam(name = "userId", required = false) Long userId) {
+
+    if (userId == null) {
+      return "login";
+    } else {
+      model.addAttribute("posts", postService.findAllPaged(page));
+      model.addAttribute("page", page);
+      model.addAttribute("userId", userId);
+      return "index";
+    }
   }
 
   @GetMapping("{id}/upvote")
@@ -36,12 +45,16 @@ public class RedditPostController {
   }
 
   @GetMapping("/add")
-  public String submit() {
+  public String submit(@RequestParam(name = "userId") Long userId,
+                       Model model) {
+    model.addAttribute("userId", userId);
     return "submit";
   }
 
   @PostMapping("/add")
-  public String addPost(@ModelAttribute RedditPost redditPost) {
+  public String addPost(@ModelAttribute RedditPost redditPost,
+                        @ModelAttribute User user) {
+    postService.addUser(redditPost,user);
     postService.addPost(redditPost);
     return "redirect:/";
   }
